@@ -1,62 +1,51 @@
-# Pro-Evolution-Quidditch con PhaserV3
+# README — Proyecto Phaser 3 (JWRS)
 
-Asignatura: Juegos para Web y Redes Sociales (Grado en Diseño y Desarrollo de Videojuegos, Universidad Rey Juan Carlos)
-Autores: Daniel Palacios Alonso, Julio Guillén García, Raúl Fernández Ruiz, Nikola Hristov Kalamov
+> **Asignatura:** *Juegos para Web y Redes Sociales* (Grado en Diseño y Desarrollo de Videojuegos, **Universidad Rey Juan Carlos**)  
+> **Autores:** **Daniel Palacios Alonso**, **Julio Guillén García**, **Raúl Fernández Ruiz**, **Nikola Hristov Kalamov**
 
-1. Descripción general
+---
 
-Este repositorio contiene un ejercicio resuelto con Phaser 3 pensado para la docencia universitaria. El proyecto muestra, de forma clara y modular, las partes esenciales de un juego 2D en la web: carga de recursos, escenas, entrada de usuario, tiempo/eventos, físicas Arcade y pantalla de cierre con salida a la página inicial.
+## 1. Descripción general
 
-Se ha diseñado para ser ejecutado en Visual Studio Code con Live Server (Go Live) sin necesidad de tooling adicional. El código y la estructura están orientados a que el alumnado pueda leer, ejecutar, modificar y evaluar cada bloque por separado.
+Repositorio docente con un **ejercicio resuelto en Phaser 3** que muestra, de forma modular, las **partes esenciales** de un juego 2D para la web: **carga de recursos**, **arquitectura por escenas**, **entrada de usuario**, **temporización**, **Arcade Physics** y **pantalla de cierre** con retorno a la página inicial.  
+Está pensado para ejecutarse con **Visual Studio Code** y **Live Server (Go Live)** sin *tooling* adicional, facilitando que el estudiantado **lea, ejecute, modifique y evalúe** cada bloque por separado.
 
-2. Objetivos docentes
+---
 
-Presentar la arquitectura por escenas de Phaser 3 (Boot → Preload → Menu → Intro → Level → Ending).
+## 2. Objetivos docentes
 
-Ilustrar la separación de responsabilidades: cargar en preload, instanciar/usar en create, lógica en update.
+- Introducir la **arquitectura por escenas** (Boot → Preload → Menu → Intro → Level → Ending).  
+- Fijar la **separación de responsabilidades**: *cargar* en `preload`, *instanciar/usar* en `create`, *lógica* en `update`.  
+- Practicar **Arcade Physics** con `overlap` (detección sin respuesta) y pautas de uso de `collider`.  
+- Emplear **tweens** para micro-animaciones de UI y **fundidos** de audio.  
+- Asegurar **responsividad** (escala/centrado) y **accesibilidad de salida** (botón y atajo).
 
-Practicar Arcade Physics con detecciones por overlap (coleccionables/disparadores) y apuntes sobre collider.
+---
 
-Mostrar tweens para micro-animaciones de interfaz y gestión de audio con fundidos (fade in/out).
+## 3. Características
 
-Asegurar responsividad (escala/centrado) y accesibilidad de salida (botón + atajo de teclado).
+- **Phaser 3** (render automático WebGL/Canvas).  
+- **Escenas independientes** (clases ES6).  
+- **Arcade Physics** sin gravedad global; jugador con `setCollideWorldBounds(true)`.  
+- **Snitch** con movimiento aleatorio periódico (timer + tween cada 500 ms).  
+- **Atajos**: `S`, `SPACE`, `ESC`; movimiento `WASD` (y `IJKL` opcional); en *Ending*, `H` para volver a inicio.  
+- **Escalado**: `Phaser.Scale.FIT` + `CENTER_BOTH`.  
+- **Audio** con reproducción tras gesto de usuario y *fade* en transiciones.
 
-3. Características principales
+---
 
-🔹 Phaser 3 (render automático WebGL/Canvas).
+## 4. Requisitos
 
-🔹 Escenas independientes (clases ES) para cada sección del flujo.
+- **VS Code** + extensión **Live Server** (recomendada), o un servidor estático sencillo.  
+- **Navegador moderno** con soporte ES6.  
+- (Opcional) **Node.js** si se prefiere `http-server`.
 
-🔹 Físicas Arcade activadas y configuradas (sin gravedad global).
+---
 
-🔹 Snitch con movimiento aleatorio cada 500 ms (timer + tween).
+## 5. Estructura del proyecto
 
-🔹 Atajos de teclado:
-
-Menú/Intro/Level: S, SPACE, ESC.
-
-Movimiento: W A S D (Jugador 1) y I J K L (Jugador 2 opcional).
-
-Ending: H para volver a la página inicial.
-
-🔹 Escalado y centrado: Phaser.Scale.FIT + CENTER_BOTH.
-
-🔹 Audio con fade entre escenas y disparo tras gesto del usuario.
-
-4. Requisitos
-
-Node.js no es imprescindible (se recomienda para alternativas a Live Server).
-
-Visual Studio Code con extensión Live Server o un servidor estático sencillo:
-
-npx http-server
-
-python -m http.server
-
-Navegador moderno (Chrome, Edge, Firefox) con soporte ES6.
-
-5. Estructura del proyecto
-/ (raíz del proyecto)
+```
+/ (raíz)
 ├─ index.html
 ├─ js/
 │  ├─ main.js
@@ -67,185 +56,142 @@ Navegador moderno (Chrome, Edge, Firefox) con soporte ES6.
 │     ├─ Intro.js
 │     ├─ Level.js
 │     └─ Ending.js
-├─ assets/
-│  ├─ images/
-│  │  ├─ background/
-│  │  ├─ text/
-│  │  └─ ... (sprites varios)
-│  ├─ audio/
-│  └─ music/
-└─ .vscode/
-   ├─ settings.json
-   └─ launch.json
+└─ assets/
+   ├─ images/ ...
+   └─ audio/ ...
+```
 
-Notas importantes de rutas:
+**Rutas:** utilice siempre rutas **relativas** (`./js/...`, `./assets/...`) y respete mayúsculas/minúsculas.
 
-Usar rutas relativas (p. ej., ./js/..., ./assets/...) para que funcione con Live Server.
+---
 
-Evitar espacios y respetar mayúsculas/minúsculas (Linux es sensible).
+## 6. Puesta en marcha
 
-6. Puesta en marcha
-Opción A: VS Code + Live Server (recomendada)
+**Opción A — VS Code + Live Server (recomendada):**  
+1) Abra la carpeta del proyecto en VS Code.  
+2) Abra `index.html` y pulse **Go Live**.  
+3) Navegue a `http://localhost:5500/` (o puerto asignado).
 
-Abrir la carpeta raíz del proyecto en VS Code.
-
-Abrir index.html y pulsar Go Live (barra inferior).
-
-El navegador se abrirá en http://localhost:5500/index.html (o puerto similar).
-
-Opción B: Servidor estático alternativo
-# http-server (Node)
+**Opción B — Servidor estático alternativo:**
+```bash
+# http-server
 npx http-server -p 5500
-
 # o con Python
 python -m http.server 5500
+```
 
-Abrir http://localhost:5500/index.html.
+---
 
-7. Configuración de Phaser 3 (resumen)
+## 7. Configuración de Phaser 3 (resumen)
 
-js/main.js:
+```javascript
+// js/main.js
 const GAME_W = 800, GAME_H = 600;
 
 const config = {
   type: Phaser.AUTO,
   width: GAME_W,
   height: GAME_H,
-  physics: {
-    default: 'arcade',
-    arcade: { gravity: { y: 0 }, debug: false }
-  },
+  physics: { default: 'arcade', arcade: { gravity: { y: 0 }, debug: false } },
   scene: [Boot, Preload, Menu, Intro, Level, Ending],
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH
-  }
+  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH }
 };
 
 window.addEventListener('load', () => new Phaser.Game(config));
+```
 
-8. Flujo de escenas
+---
 
-Boot
-Preparación mínima; arranca Preload.
+## 8. Flujo de escenas
 
-Preload
-Carga de imágenes y audio con this.load.*.
-➜ No se instancian objetos de juego aquí.
+- **Boot** → preparación mínima; transfiere a **Preload**.  
+- **Preload** → **carga** de imágenes/audio con `this.load.*` (no instanciar todavía).  
+- **Menu** → fondo, título, música en bucle; *tweens* (parpadeo, “flotar”); tecla **S** para iniciar.  
+- **Intro** → breve transición narrativa; *fade* de música; **SPACE** para continuar.  
+- **Level** → Arcade Physics; jugador (`WASD`); **snitch** con timer+tween cada 500 ms; `overlap` para captura; **ESC** vuelve al menú.  
+- **Ending** → UI **responsiva** (posiciones relativas + *autofit*); botón/atajo **H** para **volver a la página inicial**.
 
-Menu
-Fondo, título, música en bucle.
-Tween de parpadeo del botón Start y snitch “flotando”.
-Tecla S para avanzar. Selección opcional 1/2 jugadores.
+---
 
-Intro
-Presentación breve. Fade de música.
-Tecla SPACE para continuar.
+## 9. Controles
 
-Level
-Físicas Arcade: jugador (WASD), snitch móvil cada 500 ms (timer + tween).
-Overlap para detectar capturas; marcador. ESC para volver al menú.
+- **Menú**: `S` (iniciar), `1/2` (modo 1P/2P si procede).  
+- **Nivel**: `W A S D` (J1), `I J K L` (J2 opcional), `ESC` (volver al menú).  
+- **Cierre**: clicar en “Ir a la página inicial” o pulsar `H`.
 
-Ending
-Pantalla final responsiva (posiciones relativas + autofit).
-Botón y atajo H para volver a la página inicial.
+---
 
-9. Controles
+## 10. Recursos y audio
 
-Menú:
+- **Cargar** siempre en `Preload.js` con `this.load.image/audio/...`.  
+- **Instanciar/usar** en `create()` de cada escena con `this.add.*` o `this.physics.add.*`.  
+- **Audio**: reproducir tras **gesto** del usuario; aplicar **fundidos** de volumen en transiciones.
 
-S: iniciar
+---
 
-1 / 2: modo 1P/2P (si está habilitado)
+## 11. Tweens y tiempo
 
-Juego (Level):
+- **Tween**: interpolaciones declarativas para UI (opacidad, escala, posición, volumen).  
+- **Temporizadores** (`time.addEvent`): lógica **periódica** (p. ej., movimiento de la snitch) o **retardos** para encadenar escenas.
 
-Jugador 1: W A S D
+---
 
-Jugador 2: I J K L (si está habilitado)
+## 12. Arcade Physics (patrón)
 
-ESC: volver al menú
+- Crear **cuerpos** con `this.physics.add.sprite(...)`.  
+- **`overlap`**: detección sin bloqueo (coleccionables/disparadores).  
+- **`collider`**: choque con respuesta (muros/obstáculos).  
+- **`setCollideWorldBounds(true)`**: mantener al jugador dentro del marco.  
+- **`debug: true`** solo durante prácticas (desactivado en producción).
 
-Ending:
+---
 
-Click en “Ir a la página inicial”
+## 13. Responsividad y accesibilidad
 
-H: volver a la página inicial
+- **Escala** global: `FIT + CENTER_BOTH`.  
+- **UI responsiva**: posiciones relativas y *autofit* (especialmente en *Ending*).  
+- **Salida accesible**: botón visible + atajo `H`; temporizador opcional de retorno.
 
-10. Gestión de recursos y audio
+---
 
-Cargar en Preload.js con this.load.image(...), this.load.audio(...).
+## 14. Buenas prácticas
 
-Instanciar/usar en create() de cada escena con this.add.* o this.physics.add.*.
+- Una **clase por escena**; entradas **declaradas** en `create()` y **evaluadas** en `update()`.  
+- Evitar **números mágicos**: calcular sobre `this.scale.width/height`.  
+- **Limpiar** música, tweens y timers al cambiar de escena.  
+- Mantener un **estilo consistente** y mensajes de *commit* informativos.
 
-Audio: reproducir tras gesto del usuario (exigencia de navegadores).
+---
 
-Transiciones: fade de volumen antes de cambiar de escena para evitar cortes bruscos.
+## 15. Solución de problemas
 
-11. Tweens y tiempo
+- **“X is not defined”** → verifique **orden de scripts**: Phaser → escenas → `main.js`.  
+- **No suena música** → los navegadores exigen **gesto de usuario** previo.  
+- **404 en assets** → revise rutas relativas y capitalización.  
+- **UI se sale en *Ending*** → confirme `FIT + CENTER_BOTH` y *autofit* relativo en la escena.  
+- **Colisiones extrañas** → active `debug:true` temporalmente y ajuste tamaños/offsets.
 
-Tween: interpolaciones declarativas (opacidad, posición, escala, volumen) para UI y micro-feedback.
+---
 
-Temporizadores (time.addEvent): acciones periódicas (p. ej., movimiento de la snitch cada 500 ms) o retardos para encadenar eventos/escenas.
+## 16. Guía de contribución (docencia)
 
-12. Físicas Arcade (patrón básico)
+1. Mantener **coherencia** de estilos (ES6, claves de *assets* en inglés).  
+2. Las nuevas escenas deben incluir `preload` (si procede), `create` y `update`.  
+3. En *pull requests*, describir **objetivo docente**, escena afectada, controles y criterios de prueba.  
+4. No incorporar *assets* sin **licencia compatible**; indicar créditos cuando corresponda.
 
-Activadas en config.physics.
+---
 
-Crear cuerpos con this.physics.add.sprite(...).
+## 17. Licencia
 
-overlap para detección sin bloqueo (coleccionables/disparadores).
-
-collider para choque con respuesta (muros/obstáculos).
-
-setCollideWorldBounds(true) para mantener visibilidad en el marco de juego.
-
-Depuración: debug: true durante prácticas para ver hitboxes (desactivarlo en producción).
-
-13. Responsividad y accesibilidad
-
-Escala: Phaser.Scale.FIT + CENTER_BOTH (encaje proporcional y centrado).
-
-UI responsiva: posiciones relativas al tamaño de la escena; autofit de sprites en Ending.
-
-Salida accesible: botón visible + atajo de teclado (H) + temporizador opcional.
-
-14. Estructura de código recomendada
-
-Una clase por escena (Boot.js, Preload.js, Menu.js, Intro.js, Level.js, Ending.js).
-
-Lógica de entrada: declarar teclas en create(), evaluar en update().
-
-Evitar números mágicos: preferir cálculo relativo (this.scale.width/height).
-
-Limpieza: detener música/tweens/timers al salir de la escena.
-
-15. Solución de problemas (FAQ breve)
-
-Pantalla en blanco / error “X is not defined”
-Revise el orden de scripts en index.html: Phaser → escenas → main.js.
-
-No suena la música
-Los navegadores requieren gesto del usuario. Inicie la música tras pulsar una tecla/botón.
-
-Assets no cargan / 404
-Compruebe rutas relativas y mayúsculas/minúsculas.
-
-Elementos “se salen” en Ending
-Asegure scale: FIT + CENTER_BOTH y use posiciones relativas + autofit (ver Ending.js).
-
-Solapes/colisiones “raras”
-Active debug: true (temporalmente) y verifique tamaños/offsets de cuerpos.
-
-17. Licencia
-
-Este proyecto se distribuye bajo MIT License.
+Este proyecto se distribuye bajo **MIT License**.  
 El texto completo de la licencia se incluye a continuación y debe acompañar a cualquier redistribución del software.
 
+```text
 MIT License
 
-Copyright (c) 2025 Daniel Palacios Alonso,
-Julio Guillén García, Raúl Fernández Ruiz, Nikola Hristov Kalamov
+Copyright (c) 2025
+Daniel Palacios Alonso, Julio Guillén García, Raúl Fernández Ruiz, Nikola Hristov Kalamov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -254,25 +200,37 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
 
-18. Créditos y agradecimientos
+---
 
-Asignatura: Juegos para Web y Redes Sociales (Grado en Diseño y Desarrollo de Videojuegos, URJC).
+## 18. Créditos y agradecimientos
 
-Autores: Daniel Palacios Alonso, Julio Guillén García, Raúl Fernández Ruiz, Nikola Hristov Kalamov.
+- **Asignatura:** *Juegos para Web y Redes Sociales* (Grado en Diseño y Desarrollo de Videojuegos, **URJC**).  
+- **Autores:** **Daniel Palacios Alonso**, **Julio Guillén García**, **Raúl Fernández Ruiz**, **Nikola Hristov Kalamov**.  
+- Agradecimientos a los estudiantes y colaboradores que han validado las prácticas y propuesto mejoras.
 
-Agradecimientos a los estudiantes y colaboradores que han validado las prácticas y propuesto mejoras.
+---
 
-19. Cita sugerida
+## 19. Cita sugerida
 
-Palacios Alonso, D., Guillén García, J., Fernández Ruiz, R., & Hristov Kalamov, N. (2025). Proyecto docente Phaser 3: ejercicio resuelto para web 2D. Asignatura Juegos para Web y Redes Sociales, Grado en Diseño y Desarrollo de Videojuegos, Universidad Rey Juan Carlos. MIT License.
+Palacios Alonso, D., Guillén García, J., Fernández Ruiz, R., & Hristov Kalamov, N. (2025). *Proyecto docente Phaser 3: ejercicio resuelto para web 2D*. Asignatura **Juegos para Web y Redes Sociales**, Grado en Diseño y Desarrollo de Videojuegos, Universidad Rey Juan Carlos. MIT License.
+
+---
+
+## 20. Hoja de ruta
+
+- [ ] Modo 2 jugadores completo con colisiones y *spawns* equilibrados.  
+- [ ] *Tilemap* sencillo con `collider`.  
+- [ ] Menú de opciones (volumen, accesibilidad).  
+- [ ] Pruebas de regresión por escena y carga de *assets*.
