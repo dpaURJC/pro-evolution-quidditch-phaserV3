@@ -177,7 +177,7 @@ window.addEventListener('load', () => new Phaser.Game(config));
 
 1. Mantener **coherencia** de estilos (ES6, claves de *assets* en inglés).  
 2. Las nuevas escenas deben incluir `preload` (si procede), `create` y `update`.  
-3. En *pull requests*, describir **objetivo docente**, escena afectada, controles y criterios de prueba.  
+3. En *pull requests*, describir **objetivo**, escena afectada, controles y criterios de prueba.  
 4. No incorporar *assets* sin **licencia compatible**; indicar créditos cuando corresponda.
 
 ---
