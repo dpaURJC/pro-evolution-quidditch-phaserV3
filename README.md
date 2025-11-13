@@ -225,12 +225,3 @@ THE SOFTWARE.
 ## 19. Cita sugerida
 
 Palacios Alonso, D., Guillén García, J., Fernández Ruiz, R., & Hristov Kalamov, N. (2025). *Proyecto docente Phaser 3: ejercicio resuelto para web 2D*. Asignatura **Juegos para Web y Redes Sociales**, Grado en Diseño y Desarrollo de Videojuegos, Universidad Rey Juan Carlos. MIT License.
-
----
-
-## 20. Hoja de ruta
-
-- [ ] Modo 2 jugadores completo con colisiones y *spawns* equilibrados.  
-- [ ] *Tilemap* sencillo con `collider`.  
-- [ ] Menú de opciones (volumen, accesibilidad).  
-- [ ] Pruebas de regresión por escena y carga de *assets*.
