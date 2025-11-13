@@ -165,11 +165,11 @@ window.addEventListener('load', () => new Phaser.Game(config));
 
 ## 15. Solución de problemas
 
-- **“X is not defined”** → verifique **orden de scripts**: Phaser → escenas → `main.js`.  
+- **“X is not defined”** → verifica **orden de scripts**: Phaser → escenas → `main.js`.  
 - **No suena música** → los navegadores exigen **gesto de usuario** previo.  
-- **404 en assets** → revise rutas relativas y capitalización.  
-- **UI se sale en *Ending*** → confirme `FIT + CENTER_BOTH` y *autofit* relativo en la escena.  
-- **Colisiones extrañas** → active `debug:true` temporalmente y ajuste tamaños/offsets.
+- **404 en assets** → revisa rutas relativas y capitalización.  
+- **UI se sale en *Ending*** → confirma `FIT + CENTER_BOTH` y *autofit* relativo en la escena.  
+- **Colisiones extrañas** → activa `debug:true` temporalmente y ajuste tamaños/offsets.
 
 ---
 
